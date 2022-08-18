@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router";
+import { useCart } from "react-use-cart";
 import {
+	Button,
 	CardBody,
 	CardSubtitle,
 	CardText,
@@ -12,6 +14,8 @@ import NavBar from "../components/NavBar";
 import { useSingleProductQuery } from "../hooks/useProductsQuery";
 
 const SingleProduct = () => {
+	const { addItem } = useCart();
+
 	useEffect(() => {
 		document.body.style.backgroundColor = "#adb5bd";
 	}, []);
@@ -51,6 +55,13 @@ const SingleProduct = () => {
 							{data?.data.category}
 						</CardSubtitle>
 						<CardText>{data?.data.description}</CardText>
+						<Button
+							onClick={() => {
+								addItem(data?.data, 1);
+							}}
+						>
+							Add to cart
+						</Button>
 					</CardBody>
 				</Col>
 			</Row>

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useCart } from "react-use-cart";
 import {
+	Badge,
 	Collapse,
 	Nav,
 	Navbar,
@@ -21,6 +24,8 @@ const NavBar = ({ showAllProducts = true }: Props) => {
 	const [searchValue, setSearchValue] = useState("");
 	const [categoryValue, setCategoryValue] = useState("");
 
+	const { totalItems } = useCart();
+
 	const toggle = () => setIsOpen(!isOpen);
 
 	return (
@@ -40,7 +45,10 @@ const NavBar = ({ showAllProducts = true }: Props) => {
 							/>
 						</NavItem>
 					</Nav>
-					<NavbarText>Cart</NavbarText>
+					<NavbarText>
+						<Link to="/cart">Cart</Link>
+						<Badge className="bg-danger">{totalItems}</Badge>
+					</NavbarText>
 					<NavbarText className="mx-4">Sign Up</NavbarText>
 				</Collapse>
 			</Navbar>
