@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard";
 
 import { useProductsQuery } from "../hooks/useProductsQuery";
 import { Product } from "../module";
+const lodash = require("lodash");
 
 interface Props {
 	searchValue: string;
@@ -12,6 +13,7 @@ interface Props {
 
 const AllProducts = ({ searchValue, categoryValue }: Props) => {
 	const { isLoading, error, data } = useProductsQuery();
+	const data1 = lodash.shuffle(data?.data);
 	const defaultValue = categoryValue ? categoryValue : "default";
 
 	categoryValue = defaultValue;
@@ -22,7 +24,7 @@ const AllProducts = ({ searchValue, categoryValue }: Props) => {
 		}
 	);
 
-	const byCategory = data?.data.map((product: Product) => {
+	const byCategory = data1.map((product: Product) => {
 		if (product.title.toLowerCase().includes(searchValue))
 			if (
 				categoryValue === "default" ||

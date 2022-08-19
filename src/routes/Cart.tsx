@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
 import NavBar from "../components/NavBar";
+const lodash = require("lodash");
 
 const Cart = () => {
-	const [fullPrice, setFullPrice] = useState(0);
-	let price: Number;
+	let price: Number[] = [0];
+
+	useEffect(() => {
+		document.body.style.backgroundColor = "#adb5bd";
+	}, []);
 
 	const {
 		isEmpty,
@@ -19,52 +24,68 @@ const Cart = () => {
 		return (
 			<>
 				<NavBar showAllProducts={false} />
-				<p>Your cart is empty</p>
+				<h1 className="text-center mt-5 text-danger">Your cart is empty</h1>
 			</>
 		);
 
 	return (
-		<>
+		<div className="text-center">
 			<NavBar showAllProducts={false} />
 			<h1>Cart ({totalUniqueItems})</h1>
 
-			<ul>
+			<ul className="list-unstyled">
 				{items.map((item) => (
-					<li key={item.id}>
-						<img src={item.image} alt="product" style={{ width: 30 }}></img>
-						{item.quantity} x {item.title} &mdash;
+					<li key={item.id} className="my-5">
+						<p className="invisible">
+							{price.push(item.price * item!.quantity)}
+						</p>
+						<Link
+							to={`/products/${item.id}`}
+							key={item.id}
+							style={{ color: "inherit", textDecoration: "inherit" }}
+						>
+							<img src={item.image} alt="product" style={{ width: 100 }}></img>
+						</Link>
+						<h6>
+							{item.quantity} x {item.title} &mdash;
+						</h6>
 						<button
+							className="btn btn-primary rounded btn-lg mx-2"
 							onClick={() => {
-								updateItemQuantity(item.id, item.quantity - 1);
-								setFullPrice(fullPrice - item.price);
+								updateItemQuantity(item.id, item!.quantity - 1);
 							}}
 						>
 							-
 						</button>
 						<button
+							className="btn btn-primary rounded btn-lg mx-2"
 							onClick={() => {
-								updateItemQuantity(item.id, item.quantity + 1);
-								setFullPrice(fullPrice + item.price);
+								updateItemQuantity(item.id, item!.quantity + 1);
 							}}
 						>
 							+
 						</button>
 						<button
+							className="btn btn-danger btn-lg"
 							onClick={() => {
 								removeItem(item.id);
-								setFullPrice(fullPrice - item.price * item.quantity);
 							}}
 						>
 							&times;
 						</button>
-						{(price = item.price * item.quantity)}$
+						<h4>{item.price * item!.quantity}$</h4>
 					</li>
 				))}
 			</ul>
 
-			<h1>{price!.toFixed(2)}$</h1>
-			<button onClick={() => emptyCart()}>Remove all</button>
-		</>
+			<h1>
+				Total amount:{" "}
+				<span className="text-success">{lodash.sum(price).toFixed(1)}0$</span>
+			</h1>
+			<button className="btn btn-lg btn-danger" onClick={() => emptyCart()}>
+				Remove all
+			</button>
+		</div>
 	);
 };
 
