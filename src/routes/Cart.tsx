@@ -37,7 +37,7 @@ const Cart = () => {
 				{items.map((item) => (
 					<li key={item.id} className="my-5">
 						<p className="invisible">
-							{price.push(item.price * item!.quantity)}
+							{price.push(item.price * (item.quantity ? item.quantity : 1))}
 						</p>
 						<Link
 							to={`/products/${item.id}`}
@@ -52,7 +52,10 @@ const Cart = () => {
 						<button
 							className="btn btn-primary rounded btn-lg mx-2"
 							onClick={() => {
-								updateItemQuantity(item.id, item!.quantity - 1);
+								updateItemQuantity(
+									item.id,
+									item.quantity ? item.quantity - 1 : 1
+								);
 							}}
 						>
 							-
@@ -60,7 +63,10 @@ const Cart = () => {
 						<button
 							className="btn btn-primary rounded btn-lg mx-2"
 							onClick={() => {
-								updateItemQuantity(item.id, item!.quantity + 1);
+								updateItemQuantity(
+									item.id,
+									item.quantity ? item.quantity + 1 : 1
+								);
 							}}
 						>
 							+
@@ -73,7 +79,7 @@ const Cart = () => {
 						>
 							&times;
 						</button>
-						<h4>{item.price * item!.quantity}$</h4>
+						<h4>{item.price * (item.quantity ? item.quantity : 1)}$</h4>
 					</li>
 				))}
 			</ul>

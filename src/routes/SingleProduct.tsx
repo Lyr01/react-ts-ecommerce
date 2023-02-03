@@ -50,7 +50,7 @@ const SingleProduct = () => {
 					<CardBody>
 						<CardTitle tag="h1">{data?.data.title}</CardTitle>
 						<hr></hr>
-						<h2>{data?.data.price},00$</h2>
+						<h2>{data?.data.price}$</h2>
 						<CardSubtitle className="mb-2 text-muted" tag="h6">
 							{data?.data.category}
 						</CardSubtitle>
