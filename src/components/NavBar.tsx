@@ -32,10 +32,16 @@ const NavBar = ({ showAllProducts = true }: Props) => {
 	return (
 		<div>
 			<Navbar sticky="top" className="navbar-light bg-light" light expand="md">
-				<NavbarBrand href="/">React E-commerce</NavbarBrand>
+				<NavbarBrand href="https://lyr01.github.io/">
+					<strong> Hamza Khan</strong>
+				</NavbarBrand>
+
 				<NavbarToggler onClick={toggle} />
 				<Collapse isOpen={isOpen} navbar>
 					<Nav className="me-auto" navbar>
+						<NavItem className="mt-1">
+							<NavLink href="/">Home</NavLink>
+						</NavItem>
 						<NavItem className="mt-1">
 							<NavLink href="https://github.com/lyr01">GitHub</NavLink>
 						</NavItem>
