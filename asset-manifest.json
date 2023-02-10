@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-ecommerce/static/css/main.24c1726d.css",
+    "main.js": "/react-ecommerce/static/js/main.8e253652.js",
+    "static/media/filter.png": "/react-ecommerce/static/media/filter.4f68168a29be3d9ee40e.png",
+    "index.html": "/react-ecommerce/index.html",
+    "static/media/icon-cart.svg": "/react-ecommerce/static/media/icon-cart.9606ad84b7565a3f523f9429396f8066.svg",
+    "main.24c1726d.css.map": "/react-ecommerce/static/css/main.24c1726d.css.map",
+    "main.8e253652.js.map": "/react-ecommerce/static/js/main.8e253652.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.24c1726d.css",
+    "static/js/main.8e253652.js"
+  ]
+}
