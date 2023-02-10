@@ -1,7 +1,7 @@
 {
-	"name": "react-ecommerce",
+	"name": "react-ts-ecommerce",
 	"version": "0.1.0",
-	"homepage": "https://lyr01.github.io/react-ecommerce",
+	"homepage": "https://lyr01.github.io/react-ts-ecommerce",
 	"private": true,
 	"dependencies": {
 		"@tanstack/react-query": "^4.0.10",
