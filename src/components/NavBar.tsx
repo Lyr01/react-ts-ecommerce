@@ -40,12 +40,14 @@ const NavBar = ({ showAllProducts = true }: Props) => {
 				<Collapse isOpen={isOpen} navbar>
 					<Nav className="me-auto" navbar>
 						<NavItem className="mt-1">
-							<NavLink href="/">Home</NavLink>
+							<NavLink href="https://lyr01.github.io/react-ts-ecommerce/">
+								Home
+							</NavLink>
 						</NavItem>
 						<NavItem className="mt-1">
 							<NavLink href="https://github.com/lyr01">GitHub</NavLink>
 						</NavItem>
-						<NavItem className="mx-5">
+						<NavItem className="mx-md-5">
 							<Filter
 								setSearchValue={setSearchValue}
 								setCategoryValue={setCategoryValue}

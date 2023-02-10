@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Button, Input } from "reactstrap";
+import { Input } from "reactstrap";
 import { useProductsQuery } from "../hooks/useProductsQuery";
 import { Product } from "../module";
+
+import { AiOutlineSearch } from "react-icons/ai";
 
 interface Props {
 	setSearchValue: React.Dispatch<React.SetStateAction<string>>;
@@ -20,6 +22,10 @@ const Filter = ({ setSearchValue, setCategoryValue }: Props) => {
 			(value: string, index: number, self: any) => self.indexOf(value) === index
 		);
 
+	const handleSubmit = () => {
+		setSearchValue(inputValue);
+		setCategoryValue(selectCategoryValue);
+	};
 	return (
 		<div>
 			<form
@@ -30,15 +36,21 @@ const Filter = ({ setSearchValue, setCategoryValue }: Props) => {
 					setCategoryValue(selectCategoryValue);
 				}}
 			>
-				<Input
-					placeholder="Search Item..."
-					bsSize="lg"
-					className="pe-5"
-					onChange={(e) => {
-						setInputValue(e.target.value);
-					}}
-				/>
-
+				<div className="position-relative">
+					<Input
+						placeholder="Search Item..."
+						bsSize="lg"
+						className="pe-5 "
+						onChange={(e) => {
+							setInputValue(e.target.value);
+						}}
+					/>
+					<AiOutlineSearch
+						onClick={handleSubmit}
+						className="mx-1 mt-2  position-absolute end-0 top-0"
+						size={30}
+					/>
+				</div>
 				<Input
 					onChange={(e) => {
 						setSelectCategoryValue(e.target.value);
@@ -57,9 +69,7 @@ const Filter = ({ setSearchValue, setCategoryValue }: Props) => {
 
 					<option value="descending">Price by descending order</option>
 				</Input>
-				<Button color="light" type="submit" className="mx-1">
-					Search
-				</Button>
+				<button type="submit" className="d-none"></button>
 			</form>
 		</div>
 	);
