@@ -1,21 +1,16 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useCart } from "react-use-cart";
-import {
-	Button,
-	CardBody,
-	CardSubtitle,
-	CardText,
-	CardTitle,
-	Col,
-	Row,
-} from "reactstrap";
 import NavBar from "../components/NavBar";
 import { useSingleProductQuery } from "../hooks/useProductsQuery";
+import style from "./SingleProduct.module.css";
+
+import CartLogo from "../images/icon-cart.svg";
 
 const SingleProduct = () => {
 	const { addItem } = useCart();
 
+	const navigateTo = useNavigate();
 	useEffect(() => {
 		document.body.style.backgroundColor = "#adb5bd";
 	}, []);
@@ -35,37 +30,42 @@ const SingleProduct = () => {
 		return <>"An error has occurred: " + {error.message};</>;
 
 	return (
-		<div>
+		<>
 			<NavBar showAllProducts={false} />
-			<Row>
-				<Col>
-					<img
-						style={{ width: "10rem" }}
-						src={data?.data.image}
-						className="mx-4 my-1"
-						alt="product"
-					/>
-				</Col>
-				<Col className="border">
-					<CardBody>
-						<CardTitle tag="h1">{data?.data.title}</CardTitle>
-						<hr></hr>
-						<h2>{data?.data.price}$</h2>
-						<CardSubtitle className="mb-2 text-muted" tag="h6">
-							{data?.data.category}
-						</CardSubtitle>
-						<CardText>{data?.data.description}</CardText>
-						<Button
+
+			<div className={style.App}>
+				<div className={style.card}>
+					<div className={style.card_img}>
+						<img
+							src={data?.data.image}
+							alt="prodoct"
+							className={style.product_img}
+						/>
+					</div>
+					<div className={style.card_content}>
+						<small className={style.category}>{data?.data.category}</small>
+						<h1 className={style.title}>{data?.data.title}</h1>
+						<p className={style.description}>{data?.data.description}</p>
+						<h1 className={style.price}>
+							{data?.data.price.toString().includes(".")
+								? data.data.price + "$"
+								: data?.data.price + ".00$"}
+						</h1>
+
+						<button
+							className={style.add_to_cart}
 							onClick={() => {
 								addItem(data?.data, 1);
+								navigateTo("/cart");
 							}}
 						>
-							Add to cart
-						</Button>
-					</CardBody>
-				</Col>
-			</Row>
-		</div>
+							<img src={CartLogo} alt="cart icon" className={style.cart_icon} />
+							Add to Cart
+						</button>
+					</div>
+				</div>
+			</div>
+		</>
 	);
 };
 

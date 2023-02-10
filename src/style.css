@@ -1,16 +1,32 @@
 .card:hover {
 	cursor: pointer;
-	opacity: 50%;
+	box-shadow: 5px 5px black;
 }
 
-@media only screen and (min-width: 769px) {
+.card {
+	width: 20rem;
+}
+.card > img {
+	width: 10rem;
+}
+
+#categorySelect {
+	width: 3rem;
+	background-color: transparent;
+	color: transparent;
+	border: none;
+	background-image: url("../src/images/filter.png");
+	background-size: 1.5rem;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+
+#categorySelect option {
+	color: black;
+}
+
+@media only screen and (max-width: 320px) {
 	.card {
-		width: 20rem;
-	}
-}
-
-@media only screen and (min-width:370px) and (max-width:768px) {
-	.card > img {
-		width: 20rem;
+		width: 12rem;
 	}
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useCart } from "react-use-cart";
 import {
@@ -30,7 +31,7 @@ const NavBar = ({ showAllProducts = true }: Props) => {
 
 	return (
 		<div>
-			<Navbar sticky="top" className="navbar-dark bg-dark" light expand="md">
+			<Navbar sticky="top" className="navbar-light bg-light" light expand="md">
 				<NavbarBrand href="/">React E-commerce</NavbarBrand>
 				<NavbarToggler onClick={toggle} />
 				<Collapse isOpen={isOpen} navbar>
@@ -46,10 +47,11 @@ const NavBar = ({ showAllProducts = true }: Props) => {
 						</NavItem>
 					</Nav>
 					<NavbarText>
-						<Link to="/cart">Cart</Link>
+						<Link to="/cart">
+							<AiOutlineShoppingCart size={30} />
+						</Link>
 						<Badge className="bg-danger">{totalItems}</Badge>
 					</NavbarText>
-					<NavbarText className="mx-4">Sign Up</NavbarText>
 				</Collapse>
 			</Navbar>
 			{showAllProducts ? (

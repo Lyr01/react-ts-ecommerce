@@ -46,7 +46,7 @@ const Filter = ({ setSearchValue, setCategoryValue }: Props) => {
 					type="select"
 					name="select"
 					id="categorySelect"
-					className=""
+					className="filter"
 				>
 					<option value="default">Filter by category</option>
 					{uniqueCategory?.map((category: string) => (

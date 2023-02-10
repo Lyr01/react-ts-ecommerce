@@ -24,7 +24,11 @@ const ProductCard = ({ product }: Props) => {
 						{product.category}
 					</CardSubtitle>
 					<CardText className="text-truncate">{product.description}</CardText>
-					<h3>{product.price}$</h3>
+					<h3>
+						{product.price.toString().includes(".")
+							? product.price + "$"
+							: product.price + ".00$"}
+					</h3>
 				</CardBody>
 			</Card>
 		</>

@@ -31,7 +31,7 @@ const AllProducts = ({ searchValue, categoryValue }: Props) => {
 				categoryValue.toLowerCase() === product.category
 			)
 				return (
-					<Col key={product.id}>
+					<Col key={product.id} className="d-flex justify-content-center">
 						<Link
 							to={`/products/${product.id}`}
 							key={product.id}
@@ -89,21 +89,19 @@ const AllProducts = ({ searchValue, categoryValue }: Props) => {
 		return <>"An error has occurred: " + {error.message};</>;
 
 	return (
-		<>
-			<Container fluid>
-				<Row>
-					{(() => {
-						if (categoryValue === "ascending") {
-							return byAscendingPrice;
-						} else if (categoryValue === "descending") {
-							return byDescendingPrice;
-						} else {
-							return byCategory;
-						}
-					})()}
-				</Row>
-			</Container>
-		</>
+		<Container fluid>
+			<Row>
+				{(() => {
+					if (categoryValue === "ascending") {
+						return byAscendingPrice;
+					} else if (categoryValue === "descending") {
+						return byDescendingPrice;
+					} else {
+						return byCategory;
+					}
+				})()}
+			</Row>
+		</Container>
 	);
 };
 
