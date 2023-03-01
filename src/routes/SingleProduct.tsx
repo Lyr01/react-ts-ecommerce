@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { useCart } from "react-use-cart";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Home";
 import { useSingleProductQuery } from "../hooks/useProductsQuery";
 import style from "./SingleProduct.module.css";
 
@@ -11,9 +10,6 @@ const SingleProduct = () => {
 	const { addItem } = useCart();
 
 	const navigateTo = useNavigate();
-	useEffect(() => {
-		document.body.style.backgroundColor = "#adb5bd";
-	}, []);
 
 	let param = useParams();
 

@@ -1,3 +1,7 @@
+body {
+	background-color: #adb5bd !important;
+}
+
 .card:hover {
 	cursor: pointer;
 	box-shadow: 5px 5px black;

@@ -1,17 +1,12 @@
-import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "react-use-cart";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/Home";
 const lodash = require("lodash");
 
 const Cart = () => {
 	let price: Number[] = [0];
 
 	const navigateTo = useNavigate();
-
-	useEffect(() => {
-		document.body.style.backgroundColor = "#adb5bd";
-	}, []);
 
 	const {
 		isEmpty,
