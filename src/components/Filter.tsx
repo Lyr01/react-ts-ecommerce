@@ -10,7 +10,6 @@ const Filter = () => {
 	const { setSearchValue, setCategoryValue } = useContext(filterContext);
 
 	const [inputValue, setInputValue] = useState("");
-	const [selectCategoryValue, setSelectCategoryValue] = useState("");
 
 	const { data } = useProductsQuery();
 
@@ -22,7 +21,6 @@ const Filter = () => {
 
 	const handleSubmit = () => {
 		setSearchValue(inputValue);
-		setCategoryValue(selectCategoryValue);
 	};
 	return (
 		<div>
@@ -31,7 +29,6 @@ const Filter = () => {
 				onSubmit={(e) => {
 					e.preventDefault();
 					setSearchValue(inputValue);
-					setCategoryValue(selectCategoryValue);
 				}}
 			>
 				<div className="position-relative">
@@ -51,7 +48,7 @@ const Filter = () => {
 				</div>
 				<Input
 					onChange={(e) => {
-						setSelectCategoryValue(e.target.value);
+						setCategoryValue(e.target.value);
 					}}
 					type="select"
 					name="select"

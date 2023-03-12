@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 import AllProducts from "../routes/AllProducts";
 import NavBar from "./NavBar";
 
-export const filterContext = createContext<any>(null);
+export const filterContext = createContext<any>("");
 
 const Home = () => {
 	const [searchValue, setSearchValue] = useState("");
