@@ -1,16 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Input } from "reactstrap";
 import { useProductsQuery } from "../hooks/useProductsQuery";
 import { Product } from "../module";
+import { filterContext } from "./Home";
 
 import { AiOutlineSearch } from "react-icons/ai";
 
-interface Props {
-	setSearchValue: React.Dispatch<React.SetStateAction<string>>;
-	setCategoryValue: React.Dispatch<React.SetStateAction<string>>;
-}
+const Filter = () => {
+	const { setSearchValue, setCategoryValue } = useContext(filterContext);
 
-const Filter = ({ setSearchValue, setCategoryValue }: Props) => {
 	const [inputValue, setInputValue] = useState("");
 	const [selectCategoryValue, setSelectCategoryValue] = useState("");
 

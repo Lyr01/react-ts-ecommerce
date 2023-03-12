@@ -1,9 +1,9 @@
 import { useNavigate, useParams } from "react-router";
 import { useCart } from "react-use-cart";
-import NavBar from "../components/Home";
 import { useSingleProductQuery } from "../hooks/useProductsQuery";
 import style from "./SingleProduct.module.css";
 
+import NavBar from "../components/NavBar";
 import CartLogo from "../images/icon-cart.svg";
 
 const SingleProduct = () => {
@@ -27,7 +27,7 @@ const SingleProduct = () => {
 
 	return (
 		<>
-			<NavBar showAllProducts={false} />
+			<NavBar />
 
 			<div className={style.App}>
 				<div className={style.card}>

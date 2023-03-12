@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useCart } from "react-use-cart";
-import NavBar from "../components/Home";
+import NavBar from "../components/NavBar";
 const lodash = require("lodash");
 
 const Cart = () => {
@@ -20,14 +20,14 @@ const Cart = () => {
 	if (isEmpty)
 		return (
 			<>
-				<NavBar showAllProducts={false} />
+				<NavBar />
 				<h1 className="text-center mt-5 text-danger">Your cart is empty</h1>
 			</>
 		);
 
 	return (
 		<div className="text-center">
-			<NavBar showAllProducts={false} />
+			<NavBar />
 			<br />
 			<h1>Cart ({totalItems})</h1>
 			<br />

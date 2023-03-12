@@ -1,22 +1,18 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "reactstrap";
+import { filterContext } from "../components/Home";
 import ProductCard from "../components/ProductCard";
 
 import { useProductsQuery } from "../hooks/useProductsQuery";
 import { Product } from "../module";
 const lodash = require("lodash");
 
-interface Props {
-	searchValue: string;
-	categoryValue: string;
-}
+const AllProducts = () => {
+	const { searchValue, categoryValue } = useContext(filterContext);
 
-const AllProducts = ({ searchValue, categoryValue }: Props) => {
 	const { isLoading, error, data } = useProductsQuery();
 	const data1 = lodash.shuffle(data?.data);
-	const defaultValue = categoryValue ? categoryValue : "default";
-
-	categoryValue = defaultValue;
 
 	const ascendingPrice: Product[] = data?.data.sort(
 		(a: Product, b: Product) => {
