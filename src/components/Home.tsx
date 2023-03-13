@@ -3,7 +3,19 @@ import React, { createContext, useState } from "react";
 import AllProducts from "../routes/AllProducts";
 import NavBar from "./NavBar";
 
-export const filterContext = createContext<any>("");
+interface FilterContextType {
+	searchValue: string;
+	setSearchValue: React.Dispatch<React.SetStateAction<string>>;
+	categoryValue: string;
+	setCategoryValue: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const filterContext = createContext<FilterContextType>({
+	searchValue: "",
+	setSearchValue: () => {},
+	categoryValue: "default",
+	setCategoryValue: () => {},
+});
 
 const Home = () => {
 	const [searchValue, setSearchValue] = useState("");

@@ -55,7 +55,7 @@ const Filter = () => {
 					id="categorySelect"
 					className="filter"
 				>
-					<option value="default">Filter by category</option>
+					<option value="default">Every Product</option>
 					{uniqueCategory?.map((category: string) => (
 						<option key={category}>{category}</option>
 					))}
